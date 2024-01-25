@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <title>Travel Agency</title>
+</head>
+
+<body>
+    <!---start nav-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-light fixed-top bg-white p-4">
+            <div class="container navbar-expand-md">
+                <span><i class="fas fa-atlas flex-icon1 text-danger h1 mx-2"></i></span>
+                <a style="font-family: 'Satisfy', cursive;font-size: 30px;" class="navbar-brand text-dark"
+                    href="#">Travelkhor</a>
+                <button class="btn btn-danger text-white px-3" id="hide1"><i class="fas fa-search"></i></button>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarid">
+                    <span class="navbar-toggler-icon my-toggler"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarid">
+                    <ul class="navbar-nav p-2">
+                        <li><a class="nav-link text-dark" href="/">Home</a></li>
+                        <li><a class="nav-link text-dark" href="/about">About</a></li>
+                        <li><a class="nav-link text-dark" href="/destination">Destination</a></li>
+                        <li><a class="nav-link text-dark" href="/contact">Contact</a></li>
+                        <li><a class="nav-link text-dark" href="/mytours">MyTours</a></li>  
+                    </ul>
+                </div>
+                <div class="p-2 collapse navbar-collapse">
+                    <span style="padding-left: 150px;"><i class="fas fa-phone-alt text-danger" id="hide"></i></span>
+                    <span class="mx-1" id="hide">+123456789</span>
+
+
+                    <span style="display: block;height: 30px;width: 1px;background-color:#EAEAEA;margin-left: 5px;"
+                        id="hide"></span>
+                    <span id="hide"><i class="fab fa-instagram mx-3"></i></span>
+                    <span id="hide"><i class="fab fa-facebook-f mx-3"></i></span>
+                    <span id="hide"><i class="fab fa-twitter mx-3"></i></span>
+                    <span id="hide"><i class="fab fa-linkedin-in mx-3"></i></span>
+
+                    <button class="btn btn-danger text-white px-3" id="hide"><i class="fas fa-search"></i></button>
+
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    <section id="hder1">
+        <p class="hdertext">Destinations</p>
+    </section>
+    
+    <!---->
+    
+    <!---->
+   
+    <!---->
+    <section id="ds2">
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-md-12">
+                    <div class="card text-center text-white my-4 py-2">
+                        <div class="card-body">
+                            <h3 class="text-dark">Filter Search</h3>
+                            <div class="form-group">
+                                <input type="text" id="countryInput" placeholder="Country Name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="cityInput" placeholder="City Name" class="form-control">
+                            </div>
+                            <p class="text-dark">Price Range</p>
+                            <div class="form-group">
+                                <input type="text" id="minPriceInput" placeholder="$80" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="maxPriceInput" placeholder="$400" class="form-control">
+                            </div>
+
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    
+    </section>
+    
+    <section id="bdy2">
+        <div class="container">
+            <div class="row" id="toursContainer">
+
+            </div>
+        </div>
+    </section>
+    <!--  Trips Section -->
+    <!--   Footer Section Start-->
+    <section id="footer-section">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6 col-md-6">
+                        <div class="d-flex flex-row">
+                            <span><i class="fas fa-atlas flex-icon1 text-danger"></i> </span>
+                            <p class="logo mx-2 mb-4">Travelkhor</p>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <span><i class="fas fa-home flex-iconf"></i></span>
+                            <p class="text-light">2th floor, 1320/10 green road, Dania</p>
+                        </div>
+                        <div class="d-flex flex-row">
+
+                        </div>
+                        <div class="d-flex flex-row">
+                            <span><i class="fas fa-mobile-alt flex-iconf"></i> </span>
+                            <p class="text-light">+123456789</p>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <span> <i class="fas fa-envelope flex-iconf"></i></span>
+                            <p class="text-light">example@email.com</p>
+                        </div>
+                        <br>
+                        <br>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-6 col-md-6">
+                        <p class="text-white font-weight-bold"> About the Company</p>
+                        <div class="d-flex flex-row text-justify">
+                            <p style="color:white;">The best move is to just nest a flexbox inside of a flexbox. All you
+                                have to do is give the child align-items: center . This will vertically align the text
+                                inside of its parent. Use align-items instead of align-self and I also added
+                                flex-direction to column .</p>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <span> </span>
+                            <a href="https://facebook.com" class=" flex-icon2"><i class="fab fa-facebook"></i></a>
+                            <a href="https://facebook.com" class="ml-4 flex-icon2"><i class="fab fa-twitter"></i></a>
+                            <a href="https://facebook.com" class="ml-4 flex-icon2"><i class="fab fa-instagram"></i></a>
+                            <a href="https://facebook.com" class="ml-4 flex-icon2"><i class="fab fa-pinterest"></i></a>
+                            <a href="https://facebook.com" class="ml-4 flex-icon2"><i class="fab fa-youtube"></i></a>
+                        </div>
+
+                    </div>
+
+                    <hr class="w-100 bg-secondary  rular">
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p style="padding-bottom: 50px; text-align: center; color:white; padding-top:20px;"> Copyright
+                            ©2020 All rights reserved | This template is made with by <span style="color:#17a2b8;">
+                                <span class="text-primary">
+                                    <a style="display: inline;color:white " class="nav-link"
+                                        href="https://www.linkedin.com/in/anik25/">Anik</a>
+                                    <span style="color:white">&</span>
+                                    <a style="display: inline;color:white" class="nav-link"
+                                        href="https://www.facebook.com/profile.php?id=100009124208160">Arif</a>
+                                </span>
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/3b83a3096d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toursContainer = document.getElementById('toursContainer');
+            function fetchTours(filters) {
+                const url = `/api/tours?${new URLSearchParams(filters).toString()}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => displayTours(data))
+                    .catch(error => console.error('Error fetching tours:', error));
+            }
+            function displayTours(data) {
+                toursContainer.innerHTML = '';
+                data.tours.forEach(tour => {
+                    const card = document.createElement('div');
+                    card.className = 'col-md-6 col-lg-4';
+                    card.style.marginBottom = '25px';
+                    card.innerHTML = `
+                        <div class="card">
+                            <img src="${tour.img}" width="100%" class="img-fluid">
+                            <div class="card-body">
+                                <h5 class="card-title">${tour.city}</h5>
+                                <p>${tour.country}</p>
+                                <!-- Add more details as needed -->
+                            </div>
+                        </div>
+                    `;
+
+                    toursContainer.appendChild(card);
+                });
+            }
+            document.getElementById('countryInput').addEventListener('input', function () {
+                const country = this.value;
+                fetchTours({ country });
+            });
+            document.getElementById('cityInput').addEventListener('input', function () {
+                const cityName = this.value;
+                fetchTours({ cityName });
+            });
+
+            document.getElementById('minPriceInput').addEventListener('input', function () {
+                const minPrice = this.value;
+                fetchTours({ minPrice });
+            });
+
+            document.getElementById('maxPriceInput').addEventListener('input', function () {
+                const maxPrice = this.value;
+                fetchTours({ maxPrice });
+            });
+            fetchTours({});
+        });
+    </script>
+</body>
+
+</html>
