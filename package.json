@@ -1,0 +1,21 @@
+{
+  "name": "assig1",
+  "version": "1.0.0",
+  "description": "travel agency web-site server",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "travel",
+    "tour"
+  ],
+  "author": "Nariman Aimgambetov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
