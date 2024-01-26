@@ -31,7 +31,17 @@
                             <li><a class="nav-link text-dark" href="/about">About</a></li>
                             <li><a class="nav-link text-dark" href="/destination">Destination</a></li>
                             <li><a class="nav-link text-dark" href="/contact">Contact</a></li>
-                            <li><a class="nav-link text-dark" href="/mytours">MyTours</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Profile
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="nav-link text-dark" href="/mytours">MyTours</a></li>
+                                    <li><a class="nav-link text-dark" href="/recents">Recently watched tours</a></li>
+                                    <li><a class="nav-link text-dark" href="/admin">Admin dashboard</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div class="p-2 collapse navbar-collapse">
@@ -95,55 +105,6 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <!---->
-    
-        <!---->
-        <section id="section1">
-            <div class="container">
-                <div class="row d-flex flex-row p-5" >
-                    <div class="col-md-12 col-lg-4">
-                        <h4 class="text-white"
-                            style="font-family: 'Open Sans', sans-serif;padding-bottom: 10px;padding-top: 19px;">Where you
-                            wanna go?</h4>
-                    </div>
-                    <div class="col-md-12 col-lg-2" style="padding-top: 16px;">
-                        <div class="card" style="background-color: #1EC6B6;">
-    
-                            <div class="form-group">
-                                <input type="username" placeholder="Country" class="form-control">
-                            </div>
-    
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2" style="padding-top: 16px;">
-                        <div class="card" style="background-color: #1EC6B6;">
-    
-                            <div class="form-group">
-                                <input type="username" placeholder="Travel Date" class="form-control">
-                            </div>
-    
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2" style="padding-top: 16px;">
-                        <div class="card" style="background-color: #1EC6B6;">
-    
-                            <div class="form-group">
-                                <input type="username" placeholder="Travel Type" class="form-control">
-                            </div>
-    
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2" style="padding-top: 16px;">
-                        <div class="card">
-                            <div class="form-group">
-                                <button class="btn btn-outline-light form-control">Search</button>
-                            </div>
-    
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!---->
         <section id="bdy1">
             <div class="container">
@@ -225,44 +186,7 @@
                     </div>
     
                 </div>
-    
-    
-    
         </section>
-    
-    
-        <section id="section3">
-            <div class="s3body">
-                <div class="container" id="s3c">
-                    <div class="row  d-flex flex-row">
-                        <div class="col-md-12 col-lg-6">
-                            <h3 style="font-family: 'Open Sans', sans-serif;color: #ffffff; padding-top: 15px;">Please
-                                Subscribe Our Newsletter</h3>
-                        </div>
-                        <div class="col-md-12 col-lg-4" style="padding-top: 16px;">
-                            <div class="card" style="background-color: #1EC6B6;">
-    
-                                <div class="form-group">
-                                    <input type="username" placeholder="Your Email" class="form-control">
-                                </div>
-    
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-2" style="padding-top: 16px;">
-                            <div class="card" style="background-color: #1EC6B6;">
-    
-                                <div class="form-group">
-                                    <button class="btn btn-outline-light form-control">Subscribe</button>
-                                </div>
-    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-    
         <section id="bdy2">
             <div class="container">
                 <div class="row" style="padding-bottom: 70px;">
@@ -513,13 +437,9 @@
                     <div class="row">
                         <div class="col-12">
                             <p style="padding-bottom: 50px; text-align: center; color:white; padding-top:20px;"> Copyright
-                                ©2020 All rights reserved | This template is made with by <span style="color:#17a2b8;">
+                                ©2020 All rights reserved | This web-site is made by <span style="color:#17a2b8;">
                                     <span class="text-primary">
-                                        <a style="display: inline;color:white " class="nav-link"
-                                            href="https://www.linkedin.com/in/anik25/">Anik</a>
-                                        <span style="color:white">&</span>
-                                        <a style="display: inline;color:white" class="nav-link"
-                                            href="https://www.facebook.com/profile.php?id=100009124208160">Arif</a>
+                                        Aimagambetov Nariman | SE-2208
                                     </span>
                             </p>
     
@@ -538,14 +458,8 @@
     
     
         <script src="https://kit.fontawesome.com/3b83a3096d.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     
     </body>
