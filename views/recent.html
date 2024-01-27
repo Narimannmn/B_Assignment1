@@ -16,7 +16,7 @@
 <body>
     <!---start nav-->
     <div class="container-fluid">
-        <nav class="navbar navbar-light bg-white p-4">
+        <nav class="navbar navbar-light fixed-top bg-white p-4">
             <div class="container navbar-expand-md">
                 <span><i class="fas fa-atlas flex-icon1 text-danger h1 mx-2"></i></span>
                 <a style="font-family: 'Satisfy', cursive;font-size: 30px;" class="navbar-brand text-dark"
@@ -34,8 +34,8 @@
                         <li><a class="nav-link text-dark" href="/destination">Destination</a></li>
                         <li><a class="nav-link text-dark" href="/contact">Contact</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,7 +46,6 @@
                                 <li><a class="nav-link text-dark" href="/registration">Registration</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
                 <div class="p-2 collapse navbar-collapse">
@@ -69,37 +68,20 @@
         </nav>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <a href="" class="btn btn-success w-25" onclick="addUser(event)">CREATE TOUR</a>
+    <section id="bdy2">
+        <div class="container">
+            <div class="row" id="recentlyWatchedContainer">
+                <div class="container p-5 m-5 text-center">
+                    There is no recently watched tours
+                </div>
+            </div>
+            <div class="row" id="recentlyDeletedContainer">
+                <div class="container p-5 m-5 text-center">
+                    There is no recently deleted tours
+                </div>
+            </div>
         </div>
-        <h1>All tours</h1>
-        <div class="row" >
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Hotel</th>
-                        <th scope="col">Date arrival</th>
-                        <th scope="col">Date departure</th>
-                        <th scope="col">Adults</th>
-                        <th scope="col">Children</th>
-                        <th scope="col">price</th>
-                        <th style="width: 50px;">image</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </thead>
-                <tbody id="toursContainer">
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--   Footer Section Start-->
+    </section>
     <section id="footer-section">
         <div class="footer-content">
             <div class="container">
@@ -158,131 +140,65 @@
                                     Aimagambetov Nariman | SE-2208
                                 </span>
                         </p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <script src="https://kit.fontawesome.com/3b83a3096d.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    
     <script>
-        const toursContainer = document.getElementById('toursContainer');
+        const recentlyWatchedContainer = document.getElementById('recentlyWatchedContainer');
+        const recentlyDeletedContainer = document.getElementById('recentlyDeletedContainer');
 
-        function fetchTours(filters) {
-            fetch('/api/tours?' + new URLSearchParams(filters))
+        fetch('/api/recent')
                 .then(response => response.json())
-                .then(data => displayTours(data))
-                .catch(error => console.error('Error fetching tours:', error));
-        }
+                .then(recentData => {
 
-        function displayTours(data) {
-            toursContainer.innerHTML = '';
-            data.tours.forEach((tour, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                        <th scope="col" contenteditable>${tour.id}</th>
-                        <th scope="col" contenteditable>${tour.country}</th>
-                        <th scope="col" contenteditable>${tour.city}</th>
-                        <th scope="col" contenteditable>${tour.hotel}</th>
-                        <th scope="col"><input type="date" value="${tour.dateArrival}" contenteditable/></th>
-                        <th scope="col" contenteditable><input type="date" value="${tour.dateDeparture}" contenteditable/></th>
-                        <th scope="col" contenteditable>${tour.adults}</th>
-                        <th scope="col" contenteditable>${tour.children}</th>
-                        <th scope="col" contenteditable>${tour.price}</th>
-                        <th style="width: 50px; height:auto; overflow:scroll; display:inline-block; white-space: nowrap;"
-                            contenteditable>${tour.img}</th>
-                        <th><button class="btn btn-primary" onclick="saveChanges(${index})">Save Changes</button></th>
-                        <th><button class="btn btn-danger" onclick="removeTour(${tour.id})">Remove</button></th>
-                    `;
+                    if (recentData.recentlyWatched && recentData.recentlyWatched.length > 0) {
+                        recentlyWatchedContainer.innerHTML = '<h3>This is recently watched tours</h3>';
+                        recentData.recentlyWatched.forEach(tour => {
+                            const card = createTourCard(tour);
+                            recentlyWatchedContainer.appendChild(card);
+                        });
+                        recentlyWatchedContainer.style.display = 'block';
+                    }
 
-                toursContainer.appendChild(row);
-            });
-        }
-
-        function saveChanges(index) {
-            const rows = toursContainer.getElementsByTagName('tr');
-            const cells = rows[index].getElementsByTagName('th');
-            const tour = {
-                id: cells[0].innerText,
-                country: cells[1].innerText,
-                city: cells[2].innerText,
-                hotel: cells[3].innerText,
-                dateArrival: cells[4].getElementsByTagName('input')[0].value,
-                dateDeparture: cells[5].getElementsByTagName('input')[0].value,
-                adults: cells[6].innerText,
-                children: cells[7].innerText,
-                price: cells[8].innerText,
-                img: cells[9].innerText,
-                key: index
-            };
-
-            fetch('/travelagency', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(tour),
-            })
-                .then(response => response.json())
-                .then(() => {
-                    alert('Changes saved!');
-                    fetchTours({});
+                    if (recentData.recentlyDeleted && recentData.recentlyDeleted.length > 0) {
+                        recentlyDeletedContainer.innerHTML = '<h3>This is recently deleted tours by admin</h3>';
+                        recentData.recentlyDeleted.forEach(deletedTour => {
+                            const card = createTourCard(deletedTour);
+                            recentlyDeletedContainer.appendChild(card);
+                        });
+                        recentlyDeletedContainer.style.display = 'block';
+                    }
                 })
-                .catch(error => {
-                    console.error('Error updating tour:', error);
-                    alert('Error updating tour. Please try again.');
-                });
-        }
+                .catch(error => console.error('Error fetching recently watched and deleted data:', error));
 
-        function removeTour(id) {
-            const confirmation = confirm('Are you sure you want to remove this tour?');
-            if (confirmation) {
-                fetch(`/travelagency/${id}`, {
-                    method: 'DELETE',
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('Tour removed successfully');
-                            fetchTours({});
-                        } else {
-                            alert('Error removing tour. Please try again.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error removing tour:', error);
-                        alert('Error removing tour. Please try again.');
-                    });
-            } else {
-                console.log('Tour removal canceled by the user');
+            function createTourCard(tour) {
+                const card = document.createElement('div');
+                card.className = 'col-md-6 col-lg-4';
+                card.style.marginBottom = '25px';
+                card.innerHTML = `
+                    <a href="/tour/${tour.tour.id}" style="color:black; text-decoration:none;" >
+                        <div class="card">
+                            <img src="${tour.tour.img}" width="100%" class="img-fluid">
+                            <div class="card-body">
+                                <h5 class="card-title">${tour.tour.city}</h5>
+                                <p>${tour.tour.country}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <h5 class="text-danger"><strong>Timestamp:</strong> ${tour.timestamp}</h5>
+                `;
+                return card;
             }
-        }
 
-        function addUser() {
-            fetch('/travelagency', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({}),
-            })
-                .then(() => fetchTours({}))
-                .catch(error => {
-                    console.error('Error adding tour:', error);
-                });
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            fetchTours({});
-        });
+        
     </script>
-    </body>
-    
-    </html>
-
 </body>
+
 </html>

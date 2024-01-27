@@ -41,7 +41,9 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="nav-link text-dark" href="/mytours">MyTours</a></li>
                                 <li><a class="nav-link text-dark" href="/recents">Recently watched tours</a></li>
-                                <li><a class="nav-link text-dark" href="/admin">Admin dashboard</a></li>
+                                <li><a class="nav-link text-dark" href="/travelagency">Admin dashboard</a></li>
+                                <li><a class="nav-link text-dark" href="/login">Login</a></li>
+                                <li><a class="nav-link text-dark" href="/registration">Registration</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -72,16 +74,17 @@
     <section id="ds2">
         <div class="container">
             <div class="row">
-    
                 <div class="col-md-12">
                     <div class="card text-center text-white my-4 py-2">
                         <div class="card-body">
                             <h3 class="text-dark">Filter Search</h3>
                             <div class="form-group">
-                                <input type="text" id="countryInput" placeholder="Country Name" class="form-control">
+                                <label for="countrySelect" class="form-label">Country</label>
+                                <select id="countrySelect" class="form-select"></select>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="cityInput" placeholder="City Name" class="form-control">
+                                <label for="citySelect" class="form-label">City</label>
+                                <select id="citySelect" class="form-select"></select>
                             </div>
                             <p class="text-dark">Price Range</p>
                             <div class="form-group">
@@ -90,18 +93,11 @@
                             <div class="form-group">
                                 <input type="text" id="maxPriceInput" placeholder="$400" class="form-control">
                             </div>
-
                         </div>
-    
                     </div>
-    
                 </div>
-    
             </div>
-    
         </div>
-    
-    
     </section>
     
     <section id="bdy2">
@@ -184,55 +180,84 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const toursContainer = document.getElementById('toursContainer');
-            function fetchTours(filters) {
-                const url = `/api/tours?${new URLSearchParams(filters).toString()}`;
-                fetch(url)
+                const toursContainer = document.getElementById('toursContainer');
+                const countrySelect = document.getElementById('countrySelect');
+                const citySelect = document.getElementById('citySelect');
+
+                fetch('/api/destinations')
                     .then(response => response.json())
-                    .then(data => displayTours(data))
-                    .catch(error => console.error('Error fetching tours:', error));
-            }
-            function displayTours(data) {
-                toursContainer.innerHTML = '';
-                data.tours.forEach(tour => {
-                    const card = document.createElement('div');
-                    card.className = 'col-md-6 col-lg-4';
-                    card.style.marginBottom = '25px';
-                    card.innerHTML = `
-                    <a href="/tour/${tour.id}" style="color:black; text-decoration:none;" >
-                        <div class="card">
-                            <img src="${tour.img}" width="100%" class="img-fluid">
-                            <div class="card-body">
-                                <h5 class="card-title">${tour.city}</h5>
-                                <p>${tour.country}</p>
-                            </div>
-                        </div>
-                    </a>
-                    `;
+                    .then(destinations => {
+                        const allCountriesOption = document.createElement('option');
+                        allCountriesOption.value = '';
+                        allCountriesOption.textContent = 'All Countries';
+                        countrySelect.appendChild(allCountriesOption);
 
-                    toursContainer.appendChild(card);
+                        Object.keys(destinations).forEach(country => {
+                            const countryOption = document.createElement('option');
+                            countryOption.value = country;
+                            countryOption.textContent = country;
+                            countrySelect.appendChild(countryOption);
+                        });
+
+                        countrySelect.addEventListener('change', () => {
+                            const selectedCountry = countrySelect.value;
+                            const selectedCountryCities = destinations[selectedCountry];
+
+                            citySelect.innerHTML = '';
+                            const allCitiesOption = document.createElement('option');
+                            allCitiesOption.value = '';
+                            allCitiesOption.textContent = 'All Cities';
+                            citySelect.appendChild(allCitiesOption);
+
+                            if (selectedCountryCities) {
+                                selectedCountryCities.forEach(city => {
+                                    const cityOption = document.createElement('option');
+                                    cityOption.value = city;
+                                    cityOption.textContent = city;
+                                    citySelect.appendChild(cityOption);
+                                });
+                            }
+                            fetchTours({ country: selectedCountry, city: citySelect.value });
+                        });
+                    })
+                    .catch(error => console.error('Error fetching destinations:', error));
+                citySelect.addEventListener('change', () => {
+                    const selectedCountry = countrySelect.value;
+                    const selectedCity = citySelect.value;
+                    fetchTours({ country: selectedCountry, city: selectedCity });
                 });
-            }
-            document.getElementById('countryInput').addEventListener('input', function () {
-                const country = this.value;
-                fetchTours({ country });
-            });
-            document.getElementById('cityInput').addEventListener('input', function () {
-                const cityName = this.value;
-                fetchTours({ cityName });
+
+                function fetchTours(filters) {
+                    const url = `/api/tours?${new URLSearchParams(filters).toString()}`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => displayTours(data))
+                        .catch(error => console.error('Error fetching tours:', error));
+                }
+
+                function displayTours(data) {
+                    toursContainer.innerHTML = '';
+                    data.tours.forEach(tour => {
+                        const card = document.createElement('div');
+                        card.className = 'col-md-6 col-lg-4';
+                        card.style.marginBottom = '25px';
+                        card.innerHTML = `
+                            <a href="/tour/${tour.id}" style="color:black; text-decoration:none;" >
+                                <div class="card">
+                                    <img src="${tour.img}" width="100%" class="img-fluid">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${tour.city}</h5>
+                                        <p>${tour.country}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            `;
+                        toursContainer.appendChild(card);
+                    });
+                }
+                fetchTours({});
             });
 
-            document.getElementById('minPriceInput').addEventListener('input', function () {
-                const minPrice = this.value;
-                fetchTours({ minPrice });
-            });
-
-            document.getElementById('maxPriceInput').addEventListener('input', function () {
-                const maxPrice = this.value;
-                fetchTours({ maxPrice });
-            });
-            fetchTours({});
-        });
     </script>
 </body>
 

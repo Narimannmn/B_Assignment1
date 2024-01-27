@@ -3,24 +3,24 @@
     {
       "id": "1",
       "country": "United States",
-      "city": "New York",
+      "city": "New Yorks",
       "hotel": "Luxury Hotelssss",
       "dateArrival": "2024-02-01",
       "dateDeparture": "2024-02-16",
-      "adults": "2",
+      "adults": "22",
       "children": "1",
       "price": "200",
       "img": "https://d1bv4heaa2n05k.cloudfront.net/user-images/1444124382002/shutterstock-59760706small_destinationMain_1444124438669.jpeg"
     },
     {
-      "id": 2,
+      "id": "2",
       "country": "France",
       "city": "Paris",
       "hotel": "Elegant Resort",
       "dateArrival": "2024-03-15",
       "dateDeparture": "2024-03-25",
-      "adults": 3,
-      "children": 0,
+      "adults": "3",
+      "children": "0",
       "price": "300",
       "img": "https://www.travelandleisure.com/thmb/9xr8CFGR14sLvR4IhLwKV64fEV0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-Eiffel-Tower-BESTFRANCE0323-dada0673f8764c099b68d01695ef8057.jpg"
     },
@@ -97,26 +97,136 @@
       "img": "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/033/273/slideshow/fe4b9c40eeb71b3290d068a92061770a/slide-italy-main-cinque-terre-manarola.jpg"
     }
   ],
-  "results": [],
-  "actions": {
-    "viewTour": "View Tour",
-    "addTour": "Add Tour",
-    "deleteTour": "Delete Tour",
-    "history": {
-      "recentlyAdded": [
+  "destinations": {
+    "United States": [
+      "New York",
+      "Los Angeles",
+      "Chicago"
+    ],
+    "France": [
+      "Paris",
+      "Nice",
+      "Lyon"
+    ],
+    "Italy": [
+      "Rome",
+      "Venice",
+      "Florence"
+    ],
+    "Japan": [
+      "Tokyo",
+      "Osaka",
+      "Kyoto"
+    ],
+    "Kazakhstan": [
+      "Almaty",
+      "Astana"
+    ]
+  },
+  "users": [
+    {
+      "email": "111@ms.d",
+      "password": "123",
+      "role": "authorized"
+    },
+    {
+      "email": "aimgnn04@mail.ru",
+      "password": "123",
+      "role": "authorized"
+    },
+    {
+      "email": "2205217@astanait.edu.kz",
+      "password": "123",
+      "role": "admin"
+    },
+    {
+      "email": "22220517@astanait.edu.kz",
+      "password": "123",
+      "role": "authorized"
+    }
+  ],
+  "recentlyWatched": [
+    {
+      "tour": {
+        "id": "1",
+        "country": "United States",
+        "city": "New Yorks",
+        "hotel": "Luxury Hotelssss",
+        "dateArrival": "2024-02-01",
+        "dateDeparture": "2024-02-16",
+        "adults": "22",
+        "children": "1",
+        "price": "200",
+        "img": "https://d1bv4heaa2n05k.cloudfront.net/user-images/1444124382002/shutterstock-59760706small_destinationMain_1444124438669.jpeg"
+      },
+      "timestamp": "2024-01-27T10:10:37.116Z"
+    },
+    {
+      "tour": {
+        "id": "1",
+        "country": "United States",
+        "city": "New Yorks",
+        "hotel": "Luxury Hotelssss",
+        "dateArrival": "2024-02-01",
+        "dateDeparture": "2024-02-16",
+        "adults": "22",
+        "children": "1",
+        "price": "200",
+        "img": "https://d1bv4heaa2n05k.cloudfront.net/user-images/1444124382002/shutterstock-59760706small_destinationMain_1444124438669.jpeg"
+      },
+      "timestamp": "2024-01-27T10:10:40.249Z"
+    },
+    {
+      "tour": {
+        "id": 3,
+        "country": "Japan",
+        "city": "Tokyo",
+        "hotel": "City View Hotel",
+        "dateArrival": "2024-05-10",
+        "dateDeparture": "2024-05-20",
+        "adults": 1,
+        "children": 2,
+        "price": "250",
+        "img": "https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/02/a0002487/img/basic/a0002487_main.jpg"
+      },
+      "timestamp": "2024-01-27T10:10:43.910Z"
+    },
+    {
+      "tour": {
+        "id": "2",
+        "country": "France",
+        "city": "Paris",
+        "hotel": "Elegant Resort",
+        "dateArrival": "2024-03-15",
+        "dateDeparture": "2024-03-25",
+        "adults": "3",
+        "children": "0",
+        "price": "300",
+        "img": "https://www.travelandleisure.com/thmb/9xr8CFGR14sLvR4IhLwKV64fEV0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-Eiffel-Tower-BESTFRANCE0323-dada0673f8764c099b68d01695ef8057.jpg"
+      },
+      "timestamp": "2024-01-27T10:10:50.811Z"
+    }
+  ],
+  "recentlyDeleted": [
+    {
+      "tour": [
         {
-          "id": 3,
-          "country": "Italy",
-          "city": "Rome",
-          "hotel": "Historic Inn",
-          "dateArrival": "2024-04-10",
-          "dateDeparture": "2024-04-20",
-          "adults": 2,
-          "children": 0,
-          "img": "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/033/273/slideshow/fe4b9c40eeb71b3290d068a92061770a/slide-italy-main-cinque-terre-manarola.jpg"
+          "tour": {
+            "id": 9,
+            "country": "",
+            "city": "",
+            "hotel": "",
+            "dateArrival": "",
+            "dateDeparture": "",
+            "adults": "",
+            "children": "",
+            "price": "",
+            "img": ""
+          },
+          "timestamp": "2024-01-27T10:20:36.059Z"
         }
       ],
-      "recentlyDeleted": []
+      "timestamp": "2024-01-27T10:20:36.061Z"
     }
-  }
+  ]
 }

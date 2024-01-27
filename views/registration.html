@@ -41,7 +41,9 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="nav-link text-dark" href="/mytours">MyTours</a></li>
                                 <li><a class="nav-link text-dark" href="/recents">Recently watched tours</a></li>
-                                <li><a class="nav-link text-dark" href="/admin">Admin dashboard</a></li>
+                                <li><a class="nav-link text-dark" href="/travelagency">Admin dashboard</a></li>
+                                <li><a class="nav-link text-dark" href="/login">Login</a></li>
+                                <li><a class="nav-link text-dark" href="/registration">Registration</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -189,7 +191,7 @@
                         .then(data => {
                             console.log(data.role)
                             if (data.role === 'admin') {
-                                window.location.href = '/admin';
+                                window.location.href = '/travelagency';
                             } else if (data.role === 'authorized') {
                                 window.location.href = '/mytours';
                             } else {
